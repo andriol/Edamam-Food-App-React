@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [recipes, setRecipes] = useState([]);
+  const [query, setQuery] = useState('');
+  const [alert, setAlert] = useState('');
+  const url = `https://api.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>Food App</h1>
+      <form className='search-form'>
+        <input
+          type='text'
+          name='query'
+          onChange={''}
+          value={''}
+          autoComplete='off'
+          placeholder='Search Food'
+        />
+        <input type='submit' value='serach' />
+      </form>
     </div>
   );
-}
+};
 
 export default App;
